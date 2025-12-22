@@ -1,18 +1,4 @@
-#include <iostream>
-#include <unistd.h>
-#include <string>
-#include <cstdlib>
-
-void printUsage(const char* programName) {
-    std::cerr << "Usage: " << programName << " [OPTIONS] URL\n"
-              << "Options:\n"
-              << "  -r          Recursively download images by following links\n"
-              << "  -l LEVEL    Maximum depth level for recursive download (default: 5)\n"
-              << "  -p PATH     Path to save downloaded files (default: ./data/)\n"
-              << "  -h          Display this help message\n"
-              << "\nExample:\n"
-              << "  " << programName << " -r -l 3 -p ./images https://example.com\n";
-}
+#include "spider.hpp"
 
 int main(int argc, char* argv[]) {
     bool recursive = false;
@@ -26,9 +12,13 @@ int main(int argc, char* argv[]) {
                 recursive = true;
                 break;
             case 'l':
-                maxDepth = std::atoi(optarg);
+                char *endptr;
+                maxDepth = std::strtol(optarg, &endptr, 10);
                 if (maxDepth < 0) {
                     std::cerr << "Error: Level must be a non-negative integer\n";
+                    return 1;
+                } else if (*endptr != '\0') {
+                    std::cerr << "Error: Invalid level value\n";
                     return 1;
                 }
                 break;
@@ -55,11 +45,8 @@ int main(int argc, char* argv[]) {
 
     std::string url = argv[optind];
 
-    std::cout << "Spider Configuration:\n"
-              << "  URL: " << url << "\n"
-              << "  Recursive: " << (recursive ? "Yes" : "No") << "\n"
-              << "  Max Depth: " << maxDepth << "\n"
-              << "  Save Path: " << savePath << "\n";
+    SpiderConfig config{recursive, maxDepth, savePath, url};
+    printConfiguration(config.url, config.recursive, config.maxDepth, config.savePath);
 
     return 0;
 }
