@@ -1,0 +1,3 @@
+[submodule "spider/vendor/curl"]
+	path = spider/vendor/curl
+	url = https://github.com/curl/curl

@@ -4,6 +4,9 @@
 # Allow .gitignore itself
 !.gitignore
 
+# Allow .gitmodules for submodules
+!.gitmodules
+
 # Allow .github directory
 !.github/
 .github/*
@@ -21,3 +24,7 @@ spider/inc/*
 spider/src/*
 !spider/src/
 !spider/src/*.cpp
+
+# Allow vendor directory for submodules
+!spider/vendor/
+!spider/vendor/**
