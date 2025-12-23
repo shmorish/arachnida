@@ -1,4 +1,4 @@
-#include <iostream>
+#include "spider.hpp"
 
 void printUsage(const char* programName) {
     std::cerr << "Usage: " << programName << " [OPTIONS] URL\n"
@@ -11,7 +11,11 @@ void printUsage(const char* programName) {
               << "  " << programName << " -r -l 3 -p ./images https://example.com\n";
 }
 
-void printConfiguration(const std::string& url, bool recursive, int maxDepth, const std::string& savePath) {
+void printConfiguration(const SpiderConfig* config) {
+    bool recursive = config->recursive;
+    int maxDepth = config->maxDepth;
+    std::string savePath = config->savePath;
+    std::string url = config->url;
     std::cout << "Spider Configuration:\n"
               << "  URL: " << url << "\n"
               << "  Recursive: " << (recursive ? "Yes" : "No") << "\n"

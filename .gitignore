@@ -1,0 +1,17 @@
+# Ignore everything by default
+*
+
+# Allow .gitignore itself
+!.gitignore
+
+# Allow spider directory
+!spider/
+spider/*
+!spider/Makefile
+!spider/CMakeLists.txt
+spider/inc/*
+!spider/inc/
+!spider/inc/*.hpp
+spider/src/*
+!spider/src/
+!spider/src/*.cpp

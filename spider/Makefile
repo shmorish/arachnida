@@ -1,4 +1,4 @@
-.PHONY: all build clean re run
+.PHONY: all build clean fclean re run
 
 BUILD_DIR = build
 
@@ -11,9 +11,11 @@ build:
 
 clean:
 	@rm -rf $(BUILD_DIR)
+
+fclean: clean
 	@rm -f spider
 
-re: clean all
+re: fclean all
 
 run: build
 	@./spider

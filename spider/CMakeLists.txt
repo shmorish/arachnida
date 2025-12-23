@@ -10,4 +10,8 @@ include_directories(${PROJECT_SOURCE_DIR}/inc)
 
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
+find_package(CURL REQUIRED)
+
 add_executable(spider ${SOURCES})
+
+target_link_libraries(spider CURL::libcurl)
