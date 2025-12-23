@@ -4,6 +4,12 @@
 # Allow .gitignore itself
 !.gitignore
 
+# Allow .github directory
+!.github/
+.github/*
+!.github/workflows/
+!.github/workflows/*.yml
+
 # Allow spider directory
 !spider/
 spider/*
