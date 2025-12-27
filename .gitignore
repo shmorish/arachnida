@@ -28,3 +28,15 @@ spider/src/*
 # Allow vendor directory for submodules
 !spider/vendor/
 !spider/vendor/**
+
+# Allow scorpion directory
+!scorpion/
+scorpion/*
+!scorpion/Makefile
+!scorpion/CMakeLists.txt
+scorpion/inc/*
+!scorpion/inc/
+!scorpion/inc/*.hpp
+scorpion/src/*
+!scorpion/src/
+!scorpion/src/*.cpp
